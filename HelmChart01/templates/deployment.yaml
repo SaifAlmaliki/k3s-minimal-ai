@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.name }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      run: {{ .Values.name }}
+  template:
+    metadata:
+      labels:
+        run: {{ .Values.name }}
+    spec:
+      containers:
+        - env:
+          - name: RTSP_STREAM
+            value: {{ .Values.rtsp_stream }}
+          - name: MQTT_BROKER
+            value: {{ .Values.mqtt_broker }}
+          - name: MQTT_TOPIC
+            value: {{ .Values.mqtt_topic }}
+          image: "{{ .Values.imageRepository }}:{{ .Values.imageTag }}"
+          name: {{ .Values.name }}
+      restartPolicy: Always
