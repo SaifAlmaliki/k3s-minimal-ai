@@ -15,11 +15,11 @@ spec:
       containers:
         - env:
           - name: RTSP_STREAM
-            value: {{ .Values.args.rtsp_stream }}
+            value: {{ .Values.rtsp_stream }}
           - name: MQTT_BROKER
-            value: {{ .Values.args.mqtt_broker }}
+            value: {{ .Values.mqtt_broker }}
           - name: MQTT_TOPIC
-            value: {{ .Values.args.mqtt_topic }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+            value: {{ .Values.mqtt_topic }}
+          image: "{{ .Values.imageRepository }}:{{ .Values.imageTag }}"
           name: {{ .Values.name }}
       restartPolicy: Always

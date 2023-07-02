@@ -1,0 +1,10 @@
+
+replicaCount: 3
+name: minimalai
+
+imageRepository: saifwsm/minimalai
+imageTag: latest
+
+rtsp_stream: http://pendelcam.kip.uni-heidelberg.de/mjpg/video.mjpg
+mqtt_broker: 8d2c486bc4f24addadc3f5e208b92d17.s1.eu.hivemq.cloud
+mqtt_topic: ai/detection

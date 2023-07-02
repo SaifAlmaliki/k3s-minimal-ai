@@ -1,4 +1,0 @@
-name: minimal-ai
-description: A Helm Chart for a minimal AI application running on K3s
-version: 0.0.1
-apiVersion: v1
