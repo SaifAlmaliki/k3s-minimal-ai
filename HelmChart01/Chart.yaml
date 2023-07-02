@@ -1,5 +1,5 @@
 apiVersion: v2
-name: onnexai
+name: helmChart01
 description: A Helm Chart for a minimal AI application running on K3s
 
 type: application
