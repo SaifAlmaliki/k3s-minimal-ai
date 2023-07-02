@@ -31,18 +31,7 @@ if __name__ == '__main__':
     # Load in the command line arguments
     rtsp_stream, mqtt_broker, mqtt_topic = sys.argv[1], sys.argv[2], sys.argv[3]
     
-
-    
-    # hostname = os.environ["NODE_NAME"]
-    
-    # mqtt_broker = 'mosquitto-1687368643'
-    # mqtt_port: 1883
-    # rtsp_stream = 'https://user-images.githubusercontent.com/711/208944092-94e352fa-4405-42ec-8e60-4a178733248d.gif' # freight car, amphibian, amphibious vehicle
-    # rtsp_stream = 'http://158.58.130.148/mjpg/video.mjpg'
-    # rtsp_stream = 'http://pendelcam.kip.uni-heidelberg.de/mjpg/video.mjpg'  # Wall Clock
-    # mqtt_topic = 'raspberry/onnx/pred'
-    
-    # Download the model
+    # Download the onnx model
     model= requests.get('https://github.com/onnx/models/raw/main/vision/classification/inception_and_googlenet/googlenet/model/googlenet-12.onnx')
     open('model.onnx', 'wb').write(model.content)
     session = ort.InferenceSession('model.onnx')
@@ -55,8 +44,8 @@ if __name__ == '__main__':
         labels = [l.rstrip() for l in f]
     
     # using MQTT version 5 here, for 3.1.1: MQTTv311, 3.1: MQTTv31
-    # userdata is user defined data of any type, updated by user_data_set()
-    # client_id is the given name of the client
+    # userdata: is user defined data of any type, updated by user_data_set()
+    # client_id: is the given name of the client
     mqtt_client = paho.Client(client_id="rpi-k3s-cluster", userdata=None, protocol=paho.MQTTv5)
     mqtt_client.on_connect = on_connect
     
