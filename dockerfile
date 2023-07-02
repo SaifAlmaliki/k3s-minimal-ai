@@ -1,6 +1,6 @@
 FROM python:3.9
 
-COPY minimal_ai.py ./
+COPY *.py ./
 
 RUN apt-get update && \
     apt-get install ffmpeg libsm6 libxext6 -y && \
